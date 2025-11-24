@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Media Player Control</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #7f9185; /* Light gray background */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .con {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #4f6780; /* Dark blue-gray */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            color: #f8f9fa; /* White text color */
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-left: 5px;
+        }
+
+        .info {
+            margin-left: 20px;
+        }
+
+        .redirect-button {
+            background-color: #cb7eb3; /* Red */
+            color: #fff; /* White */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        nav {
+            background-color: rgb(162, 172, 205);
+            border: 2px;
+            border-radius: 13px;
+            height: 40px;
+        }
+
+        .navbar {
+            margin-left: 10%;
+            padding: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            list-style: none;
+            margin-right: 20px;
+        }
+
+        .redirect-button:hover {
+            background-color: #cc0000; /* Darker red on hover */
+        }
+
+        /* Styling for the popup */
+        .popup-container {
+            display: none; /* Initially hide the popup */
+            position: fixed; /* Position the popup */
+            top: 50%; /* Align to the middle vertically */
+            left: 50%; /* Align to the middle horizontally */
+            transform: translate(-50%, -50%); /* Center the popup */
+            width: 80%; /* Set the width of the popup */
+            height: 80%; /* Set the height of the popup */
+            background-color: #ffffff; /* Popup background color */
+            border: 10px solid #000000; /* Popup border */
+            padding: 20px; /* Padding inside the popup */
+            overflow-y: auto; /* Enable vertical scroll if content exceeds popup height */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        .popup-content {
+            /* Your existing styles */
+        }
+
+        .close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: #ffffff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+            border: 2px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="#">Home</a>
+            <a href="#" onclick="openPopup('aboutPopup')">About</a>
+            <a href="#" onclick="openPopup('developedByPopup')">Developed By</a>
+            <a href="#" onclick="openPopup('contactPopup')">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1 style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;">Hand Gesture Media Player Control</h1>
+            <p>A project to control Any Media Player by using hand gestures ✋🎥<span class="emoji"></span></p>
+        </div>
+    </div>
+    <div class="con">
+        <img src="{{ url_for('video') }}" width="400" height="400" alt="Hand Detection">
+        <div class="info">
+            <ul>
+                <li>1️⃣- mouse movement</li>
+                <li>2️⃣- mouse clicking</li>
+                <li>3️⃣- brightness increase/brightness decrease</li>
+                <li>4️⃣- forward 5sec</li>
+                <li>5️⃣- pause/play</li>
+                <li>6️⃣- backward 5sec</li>
+                <li>7️⃣- volumeup</li>
+                <li>8️⃣- volume down</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- About Popup -->
+    <div id="aboutPopup" class="popup-container">
+        <span class="close" onclick="closePopup('aboutPopup')">&times;</span>
+        <div class="popup-content">
+            <h2>About</h2>
+            <p>This project introduces an innovative approach to interact with media players through hand gestures, leveraging the capabilities of computer vision and automation libraries. The system integrates popular libraries such as OpenCV, MediaPipe, PyAutoGUI, AutoPy, and ScreenBrightnessControl to enable seamless and intuitive control over various media player functions.</p>
+            <p>The core of the system relies on OpenCV and MediaPipe for real-time hand tracking and gesture recognition. By employing advanced hand pose estimation algorithms, the system accurately identifies and interprets predefined gestures, providing a robust and responsive interface for users. This ensures an immersive and natural interaction with media content.</p>
+            <p>PyAutoGUI and AutoPy are utilized for automating user inputs and simulating keyboard and mouse actions. This enables the translation of recognized hand gestures into corresponding commands for media playback, volume adjustment, play/pause toggling, and other essential controls. The integration of these libraries ensures cross-platform compatibility and ease of implementation.</p> 
+            <p>Moreover, the project incorporates ScreenBrightnessControl to enhance the user experience by allowing dynamic adjustment of screen brightness through specific gestures. This feature not only contributes to energy efficiency but also provides additional customization options for users in different environments.</p>  
+            <p>The combination of these libraries not only facilitates efficient and accurate gesture recognition but also ensures a seamless and responsive media control experience across diverse platforms. The project's versatility makes it applicable to a wide range of media players, making it an accessible and user-friendly solution for individuals seeking a hands-free and interactive approach to media playback control.</p>
+            <p>We are able to handle basic functionalities of a media player using hand gestures. The functionalities
+              <p>1️⃣- mouse movement</p>
+              <p>2️⃣- mouse clicking</p>
+              <p>3️⃣- brightness increase/brightness decrease</p>
+              <p>4️⃣- forward 5sec</p>
+              <p>5️⃣- pause/play</p>
+              <p>7️⃣- volumeup</p>
+              <p>8️⃣- volume down</p>
+              <p>To accomplish these tasks, we have used Python modules like OpenCV, MediaPipe, PyAutoGUI, AutoPy, and ScreenBrightnessControl.</p>
+          </div>
+      </div>
+  
+      <!-- Developed By Popup -->
+      <div id="developedByPopup" class="popup-container">
+          <span class="close" onclick="closePopup('developedByPopup')">&times;</span>
+          <div class="popup-content">
+              <h2>Developed By</h2>
+              <p>J. ATHREYA SHARMA</p>
+              <P>P. SAI SREE</P>
+              <P>G. AASMITHA</P>
+              <P>K. SAI PAVAN KALYAN</P>
+              <P>G. VAMSI KRISHNA</P>
+              <p>Under the guidance of P. Hari Babu (Assistant Professor)</p>
+          </div>
+      </div>
+  
+      <!-- Contact Popup -->
+      <div id="contactPopup" class="popup-container">
+          <span class="close" onclick="closePopup('contactPopup')">&times;</span>
+          <div class="popup-content">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:athreyasharma6281@gmail.com">athreyasharma6281@gmail.com</a></p>
+              <p>Email: <a href="mailto:palurisaisree2003@gmail.com">palurisaisree2003@gmail.com</a></p>
+              <p>Email: <a href="mailto:vamsikrishnagadde1@gmail.com">vamsikrishnagadde1@gmail.com</a></p>
+              <p>Email: <a href="mailto:pavan322003@gmail.com">pavan322003@gmail.com</a></p>
+              <p>Email: <a href="mailto:athreyasharma6281@gmail.com">athreyasharma6281@gmail.com</a></p>
+          </div>
+      </div>
+  
+      <!-- JavaScript -->
+      <script>
+          function openPopup(popupId) {
+              var popups = document.getElementsByClassName('popup-container');
+              for (var i = 0; i < popups.length; i++) {
+                  popups[i].style.display = "none"; // Hide all popups
+              }
+              document.getElementById(popupId).style.display = "block"; // Display the specified popup
+          }
+  
+          function closePopup(popupId) {
+              document.getElementById(popupId).style.display = "none"; // Hide the specified popup
+          }
+  
+          function closeAllPopups() {
+              var popups = document.getElementsByClassName('popup-container');
+              for (var i = 0; i < popups.length; i++) {
+                  popups[i].style.display = "none"; // Hide each popup
+              }
+          }
+      </script>
+  </body>
+  </html>
