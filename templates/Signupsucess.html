@@ -1,0 +1,10 @@
+{% extends "Home.html" %}
+{% block title %}Signup Success{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; margin-top: 100px; color: #2c3e50;">
+        <h1>Signup Successful!</h1>
+        <p>You have successfully registered.</p>
+        <p>Click here to<a href="{% url 'Login' %}">Login</a></p>
+    </div>
+{% endblock %}

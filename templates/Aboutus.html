@@ -1,0 +1,26 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block title %}Aboutus{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/Aboutus.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <div class="right">
+                <h1>About Us</h1>
+                <p>Welcome to Talent Breeze - your trusted online job portal built to connect skilled professionals with top companies. Whether you're a fresh graduate or an experienced expert, we help you discover the right career opportunities with ease.
+
+                    Our platform simplifies the hiring process with features like quick registration, job listings, direct applications, and secure access for both job seekers and employers.
+                    
+                    At Talent Breeze, we believe in simplicity, transparency, and speed. We’re committed to making your job search or hiring journey smooth and efficient.</p>
+            </div>
+            <div class="left">
+                <img src="{% static 'images/ojp3.png' %}" alt="Talent Breeze Image">
+            </div>
+        </div>
+    </main>
+{% endblock %}

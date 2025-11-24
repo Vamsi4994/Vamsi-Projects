@@ -1,0 +1,27 @@
+.Signup-main .Signup-container form {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+}
+
+.Signup-main .Signup-container input,
+.Signup-main .Signup-container select,
+.Signup-main .Signup-container textarea,
+.Signup-main .Signup-container button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.Signup-main .Signup-container button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.Signup-main .Signup-container button:hover {
+  background-color: #45a049;
+}

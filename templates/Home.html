@@ -1,0 +1,121 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            {% block title %}Home{% endblock %}
+        </title>
+        <link href="{% static 'css/Home.css' %}" rel="stylesheet"/>
+        {% block extra_css %}
+        {% endblock %}
+    </head>
+    <body >
+        <header class="Header">
+            <div>
+              <img src="{% static 'images/TalentBreezelogo.jpg'%} " style="width:2em; height: auto;">
+              <h3><b>TalentBreeze</b></h3> 
+            </div>
+            <div>
+                <form method="GET" action="{% url 'Searchjobs' %}">
+                    <input type="text" name="query" placeholder="Company, Skill, or Job Title">
+                    <input type="text" name="location" placeholder="Location">
+                    <input type="text" name="experience" placeholder="Experience">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <nav>
+              {% if request.session.user_id %}
+                <span>Welcome, {{ request.session.user_name }}</span><br><br>
+                <div style="text-align: center;">
+                  <a style="color: white;" href="{% url 'logout_user' %}">Logout</a>
+                </div>
+              {% endif %}
+          </nav>
+
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+            <!-- Dropdown Menu -->
+            <div class="nav-menu" id="navMenu">
+              <nav>
+                {% if request.session.user_id %}
+                    <a href="{% url 'Home' %}">Home</a>
+                    <a href="{% url 'Dashboard' %}">Dashboard</a>
+                    <a href="{% url 'Aboutus' %}">Aboutus</a>
+                    <a href="{% url 'Contactus' %}">Contactus</a>
+                {% else %}
+                    <a href="{% url 'Home' %}">Home</a>
+                    <a href="{% url 'Login' %}">Login</a>
+                    <a href="{% url 'Signup' %}">Sign Up</a>
+                    <a href="{% url 'Aboutus' %}">Aboutus</a>
+                    <a href="{% url 'Contactus' %}">Contactus</a>
+                {% endif %}
+            </nav>
+              <!-- Add more URLs as needed -->
+            </div>
+          </header>
+        
+          <script>
+            function toggleMenu() {
+              const menu = document.getElementById("navMenu");
+              menu.style.display = (menu.style.display === "block") ? "none" : "block";
+            }
+        
+            // Optional: Hide menu when clicking outside
+            document.addEventListener('click', function(event) {
+              const menu = document.getElementById('navMenu');
+              const icon = document.querySelector('.menu-icon');
+              if (!menu.contains(event.target) && !icon.contains(event.target)) {
+                menu.style.display = 'none';
+              }
+            });
+          </script>
+        
+        </header>
+        {% block content %}
+        <main > 
+          <div class="container">
+            <div class="left">
+                <h1>Welcome To TalentBreeze</h1>
+                <p style="color: #2c3e50;"><b>TalentBreeze</b> is your go-to platform for connecting skilled individuals
+                   with top companies across multiple industries.
+                   Whether you're a job seeker looking for your next big opportunity or
+                   a recruiter searching for the ideal candidate,
+                   Talent Breeze makes it easy.<br>
+                  </p>
+                  <ul>
+                  <b>Why Choose Talent Breeze?</b>
+                  <li> Quick and Simple Registration</li>
+                  <li> Easy Job Search with Smart Filters</li>
+                  <li> Direct Applications to Employers</li>
+                  <li> Completely Free and User-Friendly</li>
+                </ul>    
+          </div>
+          <div class="right">
+                <img src="{% static 'images/Ojp1Home.jpg' %}" alt="Talent Breeze Image">
+          </div>
+          <center>
+          <p style="color: #2c3e50;"><strong>Start exploring now and take the next step in your career journey with Talent Breeze – where talent meets opportunity!</strong></p>
+          <div class="featured">
+            <h2 style="color: #2c3e50;">Featured By</h2>
+            <div class="logos">
+                <img src="https://1000logos.net/wp-content/uploads/2016/11/google-logo.jpg" alt="Google">
+                <img src="https://static.vecteezy.com/system/resources/previews/028/339/965/original/microsoft-icon-logo-symbol-free-png.png" alt="Microsoft">
+                <img src="https://th.bing.com/th/id/OIP.VenRUM9Es5ylErglBhhwwAHaFG?cb=iwp1&rs=1&pid=ImgDetMain" alt="TCS">
+                <img src="https://ik.imagekit.io/tp/20220201-accenture-logo.png" alt="Accenture">
+            </div>
+            <div>
+              <p>                             <br>
+                                              <br>
+                                              <br>
+              </p>
+          </div>
+        </div>
+      </center>
+        </main>
+        {% endblock %}
+       <footer>
+        <center>
+          <p> &copy; Talent Breeze, All rights reserved.</p>
+        </center>
+      </footer>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block title %}Signup{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/Signup.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<main class="Signup-main">
+    <center>
+        <div class="Signup-container">
+            <form action="{% url 'register_user' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 style="color: #2c3e50;">Signup</h2>
+                <input type="text" name="first_name" placeholder="First Name" required><br>
+                <input type="text" name="last_name" placeholder="Last Name" required><br>
+                <select name="gender" required>
+                    <option value="">--Select Gender--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select><br>
+                <input type="date" name="date_of_birth" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="text" name="mobile_number" placeholder="Mobile Number" required><br>
+                <input type="text" name="password" placeholder="password" required><br>
+                <input type="text" name="higher_education_degree" placeholder="Degree" required><br>
+                <input type="text" name="higher_education_branch" placeholder="Branch" required><br>
+                <input type="number" name="higher_education_year_of_passout" placeholder="Year of Passout" required><br>
+                <input type="number" name="experience" placeholder="Experience (years)" min="0" required><br>
+                <input type="text" name="location" placeholder="Location" required><br>
+                <input type="text" name="zipcode" placeholder="Zipcode" required><br>
+                <select name="usertype" id="usertype" required>
+                    <option value="">--Select User Type--</option>
+                    <option value="Job_Seeker">Job Seeker</option>
+                    <option value="Recruiter">Recruiter</option>
+                    <option value="Employee">Employee</option>
+                </select><br>
+                <div id="companyFields" class="company-fields">
+                    <input type="text" name="company_name" placeholder="Company Name"><br>
+                    <input type="text" name="company_address" placeholder="Company Address"><br>
+                </div>
+                <input type="file" name="resume" accept=".pdf,.doc,.docx"><br><br>
+                <button type="submit">Submit</button>
+                <div>
+                    <p>Already Registered? <a href="{% url 'Login' %}">Login</a></p>
+                </div>
+                <div>
+                    <p>                             <br>
+                                                    <br>
+                                                    <br>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </center>
+    <script>
+        function toggleCompanyFields() {
+            const userType = document.getElementById('usertype').value;
+            const companyFields = document.getElementById('companyFields');
+            if (userType === 'Recruiter' || userType === 'Employee') {
+                companyFields.style.display = 'block';
+            } else {
+                companyFields.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('usertype').addEventListener('change', toggleCompanyFields);
+            toggleCompanyFields();
+        });
+    </script>
+{% endblock %}
+

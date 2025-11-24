@@ -1,0 +1,10 @@
+{% extends 'Home.html' %}
+{% block title %}Signup Error{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; margin-top: 100px;">
+        <h2 style="color:#2c3e50;">Signup Failed</h2>
+        <p>{{ error_message }}</p>
+        <p>Try Again! <a href="{% url 'Signup' %}">Signup</a></p>
+    </div>
+{% endblock %}

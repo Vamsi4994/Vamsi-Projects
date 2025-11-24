@@ -1,0 +1,29 @@
+.login-main .login-container form {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+}
+
+.login-main .login-container input,
+.login-main .login-container select,
+.login-main .login-container textarea,
+.login-main .login-container button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.login-main .login-container button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-main .login-container button:hover {
+  background-color: #45a049;
+}
+
+

@@ -1,0 +1,26 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block title %}Seachjobs{% endblock %}
+    <h2 style="text-align:center;">Search Results</h2>
+{% block extra_css %}
+<link href="{% static 'css/Searchjobs.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <main method="post" action="{% url 'search_jobs' %}">
+    {% if jobs %}
+        {% for job in jobs %}
+            <div class="job-card">
+                <h3>{{ job.job_title }} at {{ job.company_name }}</h3>
+                <p><strong>Location:</strong> {{ job.location }}</p>
+                <p><strong>Experience Needed:</strong> {{ job.experience_needed }}</p>
+                <p><strong>Job Type:</strong> {{ job.job_type }}</p>
+                <p><strong>Posted On:</strong> {{ job.posted_date }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center;">No jobs found matching your criteria.</p>
+    {% endif %}
+    </main>
+{% endblock %}

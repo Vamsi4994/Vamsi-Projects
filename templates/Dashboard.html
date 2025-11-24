@@ -1,0 +1,16 @@
+{% extends 'Home.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<main>
+    <center>
+    {% if user.user_type == 'Job_Seeker' %}
+    <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>User Type: {{ user.usertype }}</p>
+    {% endif %}
+    </center>
+</main>
+{% endblock %}

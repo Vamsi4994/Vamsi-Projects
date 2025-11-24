@@ -1,0 +1,165 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper > main {
+  flex: 1;
+}
+
+header {
+    background-color: rgb(65, 2, 65);
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left, .center, .right {
+    flex: 1;
+}
+
+.center form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    text-align: right;
+}
+
+/* Dropdown */
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-menu a:last-child {
+    border-bottom: none;
+}
+
+.nav-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+footer {
+    background-color: rgb(65, 2, 65);
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 100px;
+    background-color: #fff;
+    flex-wrap: wrap;
+  }
+
+  .left {
+    flex: 1;
+    padding-right: 40px;
+    min-width: 300px;
+  }
+
+  .left h1 {
+    color: #2c3e50;
+    font-size: 36px;
+  }
+  .left ul {
+    font-size: 18px;
+    color: #2c3e50 ;
+    line-height: 1.6;
+  }
+
+  .left ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .left ul li::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: black;
+  }
+
+  .right {
+    flex: 1;
+    text-align: center;
+    min-width: 300px;
+  }
+
+  .right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .featured {
+    text-align: center;
+  }
+
+  .featured h2 {
+    color:#2c3e50;
+  }
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .logos img {
+    width: 50px;
+    height: auto;
+  }
+
+  .logos img:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+
+    .left,
+    .right {
+      padding: 0;
+      text-align: center;
+    }
+  }
